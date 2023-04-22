@@ -13,17 +13,18 @@ Resources:
       InstanceType: t2.micro
       ImageId: ami-07968ca855e5607d4
       NetworkInterfaces:
-      - GroupSet: !Ref SimpleInstanceSg
-        AssociatePublicIpAddress: 'true'
-        DeviceIndex: '0'
-        DeleteOnTermination: 'true'
+        - GroupSet: 
+            - !Ref SimpleInstanceSg
+          AssociatePublicIpAddress: 'true'
+          DeviceIndex: '0'
+          DeleteOnTermination: 'true'
   SimpleInstanceSg:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Enable SSH access via port 22
       VpcId: vpc-046ac32fcb6cf6218
       SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: '22'
-        ToPort: '22'
-        CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0
